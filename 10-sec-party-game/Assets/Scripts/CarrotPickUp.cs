@@ -9,9 +9,13 @@ public class CarrotPickUp : MonoBehaviour
 
     public int scoreValue;
 
+    public AudioSource collectSFX;
+    
+
     void Start()
     {
         Player = FindObjectOfType<PlayerBunny> ();
+        
     }
    
    
@@ -19,9 +23,13 @@ public class CarrotPickUp : MonoBehaviour
    {
        if (other.tag == "Player")
        {
-           Destroy(gameObject);
            Player.collectCarrot(scoreValue);
+           Player.updateCarrotNumber();
+           collectSFX.Play();
+           Destroy(gameObject);
+           
        }
+       
    }
 
 
